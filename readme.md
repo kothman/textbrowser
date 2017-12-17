@@ -8,8 +8,9 @@ Python library and server for fetching a URL and stripping the html of styling/a
 - pip
 
 ## Setup
-`$ npm i`
-`$ npm run setup # installs Beautiful Soup python module`
+$ `npm i`
+
+$ `npm run setup # installs Beautiful Soup python module`
 
 ## Build & Start Servers
 `$ npm run start`
