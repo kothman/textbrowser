@@ -13,4 +13,4 @@ $ `npm i`
 $ `npm run setup # installs Beautiful Soup python module`
 
 ## Build & Start Servers
-`$ npm run start`
+$ `npm run start`
