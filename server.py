@@ -12,7 +12,7 @@ class Handler(BaseHTTPRequestHandler):
     def handle_request(self):
         print self.path
         query_components = parse_qs(urlparse(self.path).query)
-        if len(query_components['url']) < 1:
+        if 'url' not in query_components or len(query_components['url']) < 1:
             print 'URL not provided'
             return self.error('URL not provided')
         url = query_components['url'][0]
@@ -43,7 +43,7 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(html)
 
-    def error(msg):
+    def error(self, msg):
         return '<p class="error">' + msg + '</p>'
 
 if len(sys.argv) != 2:
