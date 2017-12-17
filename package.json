@@ -5,9 +5,12 @@
       "babel-preset-env": "^1.6.1",
       "babel-preset-react": "^6.24.1",
       "concurrently": "^3.5.1",
+      "css-loader": "^0.28.7",
       "html-webpack-plugin": "^2.30.1",
+      "normalize.css": "^7.0.0",
       "react": "^16.2.0",
       "react-dom": "^16.2.0",
+      "style-loader": "^0.19.1",
       "webpack": "^3.10.0",
       "webpack-dev-server": "^2.9.7"
    },
@@ -20,10 +23,12 @@
    },
    "dependencies": {},
    "scripts": {
-       "build": "webpack",
-       "python-server": "python server.py 8081",
-       "webpack-server": "webpack-dev-server",
-       "test": "echo \"Error: no test specified\" && exit 1"
+      "setup": "pip install bs4",
+      "build": "webpack",
+      "start": "concurrently --kill-others \"npm run python-server\" \"npm run webpack-server\"",
+      "python-server": "python server.py 8081",
+      "webpack-server": "webpack-dev-server",
+      "test": "python -m unittest tests.test_accessibility"
    },
    "repository": {
       "type": "git",
