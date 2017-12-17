@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'normalize.css';
-import './style.css';
+import './style.scss';
 
 class PageContent extends React.Component {
     render() {
