@@ -1,9 +1,56 @@
+/* style.scss */
 
+form {
+    margin-bottom: 1rem;
+}
+
+input, button {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: .25rem;
+    margin-right: 1rem;
+    outline: none;
+}
+
+input[type="url"] {
+    max-width: 100%;
+    width: 20rem;
+}
+
+button {
+    cursor: pointer;
+}
+
+ul {
+    padding-left: 1rem;
+}
 
 table {
+    width: 100%;
+    
+    border-spacing: unset;
+    border-collapse: collapse;
+    
+    tbody {
+	tr {
+	    border-bottom: 1px solid black;
 
+	    td {
+		padding: .25rem;
+		border-right: 1px solid black;
+	    }
+	}
+    }
 }
 
 .container {
     padding: 1rem;
+}
+
+#app-container {
+    div, form, h1, h2, h3, h4, h5, h6 {
+	&:not(:last-child) {
+	    padding-bottom: .25rem;
+	}
+    }
 }
