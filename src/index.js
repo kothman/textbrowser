@@ -28,7 +28,7 @@ class BackButton extends React.Component {
     
     render() {
 	let disabled = false;
-	if (history.length === 0)
+	if (this.state.history.length <= 1)
 	    disabled = true;
 	return <button type='button' disabled={disabled} className='back-button' onClick={this.handleBackButton.bind(this)}>Back</button>;
     }
@@ -73,15 +73,16 @@ class BrowserForm extends React.Component {
     render() {
 	return (
 		<form onSubmit={this.handleFormSubmit.bind(this)}>
-	    <BackButton observer={this.observer} />
 		<input type='url' id='url' placeholder='https://...' value={this.state.urlInputValue} onChange={this.handleUrlChange.bind(this)} />
-		<button type='button' onClick={this.handleFormSubmit.bind(this)}>Go =></button>
+		<BackButton observer={this.observer} />
+		<button type='button' onClick={this.handleFormSubmit.bind(this)} id='submit'>Submit</button>
 	    </form>);
 
     }
 
     handleFormSubmit(e) {
-	e.preventDefault();
+	if (e)
+	    e.preventDefault();
 	this.observer.publish('save url to history', this.state.urlInputValue);
 	this.observer.publish('retrieve page');
     }
@@ -93,7 +94,6 @@ class BrowserForm extends React.Component {
     updateUrl(url) {
 	this.setState({urlInputValue: url});
     }
-    
 }
 
 class TextBrowser extends React.Component {
@@ -101,14 +101,14 @@ class TextBrowser extends React.Component {
     constructor(props) {
 	super(props);
 	this.state = {
-	    htmlContent: '<p>[page shows here]</p>',
-	    urlInputValue: 'https://github.com/kothman/textbrowser'
+	    htmlContent: '',
 	};
 	this.observer = ReactObserver();
     }
 
     componentDidMount() {
 	this.observer.subscribe('retrieve page', this.retrievePage.bind(this));
+	document.getElementById('submit').click();
     }
     
     render() {
