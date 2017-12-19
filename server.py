@@ -28,10 +28,12 @@ class Handler(BaseHTTPRequestHandler):
             'img',
             'svg'
         ])
+        soup = accessibility.update_short_urls(soup, url)
         soup = accessibility.apply_to_all_tags(soup, [
             accessibility.remove_all_attributes,
             accessibility.remove_empty_tags,
-            accessibility.normalize_tag_text
+            accessibility.normalize_tag_text,
+            accessibility.replace_tag_names
         ])
         return str(soup)
             
