@@ -61,7 +61,7 @@ class BrowserForm extends React.Component {
     constructor(props) {
 	super(props);
 	this.state = {
-	    urlInputValue: 'https://kothman.io'
+	    urlInputValue: 'https://github.com/kothman/textbrowser'
 	};
 	this.observer = props.observer;
     }
